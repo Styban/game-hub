@@ -1,12 +1,8 @@
-import genres from '../data/genres'
-import { useQuery } from '@tanstack/react-query';
-import genreService from '../services/genreService';
+import useGenres from "./useGenres";
 
-const useGenre = () => useQuery({
-    queryKey: ["genres"],
-    queryFn: genreService.getAll,
-    staleTime: 60 * 1000,
-    initialData: { count: genres.length, results: genres, next: null }
-});
+const useGenre = (id?: number) => {
+    const { data: genres } = useGenres();
+    return genres.results.find((g) => g.id === id);
+}
 
-export default useGenre; 
+export default useGenre
