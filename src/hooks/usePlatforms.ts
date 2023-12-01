@@ -3,7 +3,7 @@ import platforms from "../data/platforms";
 import { FetchResponse } from "../services/api-client";
 import platformsService, { Platform } from "../services/platformsService";
 
-const usePlatfroms = () => useQuery<FetchResponse<Platform>>({
+const usePlatfroms = () => useQuery({
     queryKey: ["platforms"],
     queryFn: platformsService.getAll,
     staleTime: 60 * 1000,

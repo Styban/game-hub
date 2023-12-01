@@ -1,7 +1,6 @@
 import genres from '../data/genres'
 import { useQuery } from '@tanstack/react-query';
-import genreService, { Genre } from '../services/genreService';
-import APICLIENT from '../services/api-client';
+import genreService from '../services/genreService';
 
 const useGenre = () => useQuery({
     queryKey: ["genres"],

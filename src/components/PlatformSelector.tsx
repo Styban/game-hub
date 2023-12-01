@@ -7,7 +7,7 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import usePlatfroms from "../hooks/usePlatforms";
-import { BsChevronBarDown, BsChevronDown } from "react-icons/bs";
+import { BsChevronDown } from "react-icons/bs";
 import { Platform } from "../services/platformsService";
 
 interface Props {
