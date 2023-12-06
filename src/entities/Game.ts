@@ -1,5 +1,5 @@
-import APICLIENT from "./api-client";
-import { Platform } from "./platformsService";
+import { Platform } from "./Platform";
+
 
 export interface Game {
     id: number;
@@ -7,9 +7,7 @@ export interface Game {
     slug: string;
     description_raw: string;
     background_image: string;
-    parent_platforms: {platform: Platform}[];
+    parent_platforms: { platform: Platform; }[];
     metacritic: number;
     rating_top: number;
 }
-
-export default new APICLIENT<Game>("/games")
