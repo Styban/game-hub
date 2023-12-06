@@ -15,7 +15,7 @@ const ExpandableText = ({ children }: Props) => {
     return <Text>{children}</Text>;
   }
 
-  const summary = expanded
+  const summary = !expanded
     ? children.substring(0, limit).trimEnd().concat("...")
     : children;
 

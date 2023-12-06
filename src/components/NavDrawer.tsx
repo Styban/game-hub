@@ -6,10 +6,12 @@ import {
   DrawerHeader,
   DrawerBody,
   Button,
-  IconButton,
+  VStack,
+  Stack,
 } from "@chakra-ui/react";
 import ColorModeSwitch from "./ColorModeSwitch";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import { NavLink } from "react-router-dom";
 
 const NavDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -19,11 +21,15 @@ const NavDrawer = () => {
         <HamburgerIcon boxSize={10} />
       </Button>
       <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
-        <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader borderBottomWidth="1px">Basic Drawer</DrawerHeader>
           <DrawerBody>
-            <ColorModeSwitch />
+            <Stack spacing={2}>
+              <NavLink to={"/"}>Home</NavLink>
+              <NavLink to={"/"}>Home</NavLink>
+              <NavLink to={"/"}>Home</NavLink>
+              <ColorModeSwitch />
+            </Stack>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
