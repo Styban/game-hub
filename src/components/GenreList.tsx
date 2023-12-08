@@ -26,7 +26,7 @@ const GenreList = () => {
         Genres
       </Heading>
       <List>
-        {data?.results.map((genre) => (
+        {data?.map((genre) => (
           <ListItem paddingY="5px" key={genre.id}>
             <HStack>
               <Image
