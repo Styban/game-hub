@@ -8,6 +8,7 @@ import {
   Button,
   VStack,
   Stack,
+  DrawerFooter,
 } from "@chakra-ui/react";
 import ColorModeSwitch from "./ColorModeSwitch";
 import { HamburgerIcon } from "@chakra-ui/icons";
@@ -26,8 +27,8 @@ const NavDrawer = () => {
           <DrawerBody>
             <Stack spacing={2}>
               <NavLink to={"/"}>Home</NavLink>
-              <NavLink to={"/"}>Home</NavLink>
-              <NavLink to={"/"}>Home</NavLink>
+              <NavLink to={"/"}>User Profile</NavLink>
+              <NavLink to={"/"}>Logout</NavLink>
               <ColorModeSwitch />
             </Stack>
           </DrawerBody>
