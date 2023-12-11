@@ -1,15 +1,14 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 
-$servername = "localhost";
-$database = "game_db";
-$username = "root";
-$password = "May252004";
-$port = 3310;
-// Create connection
-$db = mysqli_connect($servername, $username, $password, $database, $port);
-// Check connection hbAZk18VnMPiB6rpABHV
-if (!$db) {
-    die("Connection failed: " . mysqli_connect_error());
+
+$dsn = "mysql:host=localhost;port=3310;dbname=game_db";
+$dbusername = "root";
+$dbpassword = "May252004";
+
+try {
+    $pdo = new PDO($dsn, $dbusername, $dbpassword);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
 }
-?>

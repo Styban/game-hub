@@ -1,17 +1,20 @@
 <?php
-    require 'db_connection.php';
+try {
+    require_once 'db_connection.php';
 
     $query = "SELECT * FROM genres";
 
-    $result = mysqli_query($db, $query);
+    $statement = $pdo->prepare($query);
+    $statement->execute();
 
-    if (!$result) die("Query failed:" . mysqli_error($db));
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    $data = array();
-    
-    while($row = mysqli_fetch_array($result)){
-        $data[] = $row;
-    }
-    echo json_encode($data);
-    return;
+    $pdo = null;
+    $statement = null;
+
+    echo json_encode($result);
+    die();
+} catch (PDOException $e) {
+    die("Query failed: " . $e->getMessage());
+}
 ?>
