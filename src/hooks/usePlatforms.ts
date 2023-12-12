@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import platforms from "../data/platforms";
 import Platform from "../entities/Platform";
-import APICLIENT from "../services/api-client";
+import PHPAPICLIENT from "../api/apiClient";
 
-const apiClient = new APICLIENT<Platform>("/platforms/lists/parents");
+const apiClient = new PHPAPICLIENT<Platform>("/get_platforms.php");
 
 const usePlatfroms = () =>
   useQuery({
