@@ -27,7 +27,7 @@ const NavDrawer = () => {
           <DrawerBody>
             <Stack spacing={2}>
               <NavLink to={"/"}>Home</NavLink>
-              <NavLink to={"/sellercenter"}>User Profile</NavLink>
+              <NavLink to={"/sellercenter"}>Admin</NavLink>
               <NavLink to={"/"}>Logout</NavLink>
               <ColorModeSwitch />
             </Stack>

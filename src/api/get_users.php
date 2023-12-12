@@ -1,17 +1,27 @@
 <?php
-    require 'db_connection.php';
+require_once "db_connection.php";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST["email"];
+    $password = $_POST["password"];
 
-    $query = "SELECT * FROM users";
+    try {
 
-    $result = mysqli_query($db, $query);
 
-    if (!$result) die("Query failed:" . mysqli_error($db));
+        $query = "CALL find_user(:user, :password)";
+        $statement = $pdo->prepare($query);
 
-    $data = array();
-    
-    while($row = mysqli_fetch_array($result)){
-        $data[] = $row;
+        $statement->bindParam(":user", $user);
+        $statement->bindParam(":password", $password);
+
+        $statement->execute();
+
+        $pdo = null;
+        $statement = null;
+
+        die();
+    } catch (PDOException $e) {
+        die("Query failed: " . $e->getMessage());
     }
-    echo json_encode($data);
+} else {
     return;
-?>
+}

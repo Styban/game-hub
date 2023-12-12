@@ -11,18 +11,30 @@ import {
   CardHeader,
   Center,
   Box,
-  Divider,
 } from "@chakra-ui/react";
-import React, { useRef } from "react";
+import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
-import { Form } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
+import useUserQueryStore from "../userstore";
 
 const Login = () => {
+  const setUser = useUserQueryStore((s) => s.setUser);
+  const setPassword = useUserQueryStore((s) => s.setPassword);
+
   const { register, handleSubmit } = useForm();
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
 
-  const onSubmit = (data: FieldValues) => console.log(data);  
+  const navigate = useNavigate();
+
+  const onSubmit = (data: FieldValues) => {
+    const { user, password } = data;
+
+    setUser(user);
+    setPassword(password);
+
+    navigate("/sellercenter");
+  };
 
   return (
     <Center>
@@ -30,11 +42,15 @@ const Login = () => {
         <CardHeader textAlign={"center"} mb="-5">
           <Heading as={"h1"}>Login</Heading>
         </CardHeader>
+
         <CardBody>
-          <Form onSubmit={handleSubmit(onSubmit)}>
+          <Form onSubmit={handleSubmit(onSubmit)} method="post">
             <FormControl mb={6}>
-              <FormLabel>Email</FormLabel>
-              <Input {...register("email")} placeholder="Enter Email" />
+              <FormLabel>User</FormLabel>
+              <Input
+                {...register("user")}
+                placeholder="Enter Username of Email"
+              />
             </FormControl>
 
             <FormControl mb={6}>
