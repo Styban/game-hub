@@ -15,12 +15,8 @@ import {
 import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { Form, useNavigate } from "react-router-dom";
-import useUserQueryStore from "../userstore";
 
 const Login = () => {
-  const setUser = useUserQueryStore((s) => s.setUser);
-  const setPassword = useUserQueryStore((s) => s.setPassword);
-
   const { register, handleSubmit } = useForm();
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
@@ -29,9 +25,6 @@ const Login = () => {
 
   const onSubmit = (data: FieldValues) => {
     const { user, password } = data;
-
-    setUser(user);
-    setPassword(password);
 
     navigate("/sellercenter");
   };

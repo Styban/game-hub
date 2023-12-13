@@ -5,7 +5,6 @@ import Layout from "./pages/Layout";
 import HomePage from "./pages/HomePage";
 import ErrorPage from "./pages/ErrorPage";
 import Login from "./components/Login";
-import Sellerdashboard from "./components/admin/Sellerdashboard";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminHomePage from "./pages/admin/AdminHomePage";
 
@@ -16,7 +15,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: "login", element: <Login /> },
+      // { path: "login", element: <Login /> },
       { path: "games/:slug", element: <GameDetailsPage /> },
     ],
   },
