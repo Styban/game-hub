@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { FetchResponse } from "../services/api-client";
 import useGameQueryStore from "../store";
 import GameAdmin from "../entities/GameAdmin";
 import PHPAPICLIENT from "../api/apiClient";
@@ -15,7 +14,6 @@ const useGamesAdmin = () => {
         params: {
           genres: gameQuery.genreId,
           parent_platforms: gameQuery.platformId,
-          search: gameQuery.search,
         },
       }),
     staleTime: 60 * 1000,

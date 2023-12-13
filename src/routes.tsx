@@ -4,7 +4,6 @@ import GameDetailsPage from "./pages/GameDetailsPage";
 import Layout from "./pages/Layout";
 import HomePage from "./pages/HomePage";
 import ErrorPage from "./pages/ErrorPage";
-import Login from "./components/Login";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminHomePage from "./pages/admin/AdminHomePage";
 

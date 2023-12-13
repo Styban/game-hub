@@ -7,7 +7,6 @@ import useGamesAdmin from "../../adminhook/useGamesAdmin";
 
 const GameGrid = () => {
   const { data: games, isLoading } = useGamesAdmin();
-  console.log(games);
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
