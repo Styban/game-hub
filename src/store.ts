@@ -8,7 +8,7 @@ interface GameQuery {
 
 interface GameQueryStore {
   gameQuery: GameQuery;
-  setSelectedGenre: (selectedGenreId: number) => void;
+  setSelectedGenre: (selectedGenreId?: number) => void;
   setSelectedPlatform: (selectedPlatformId?: number) => void;
   setSearchInput: (searchText: string) => void;
 }

@@ -20,6 +20,10 @@ const GenreList = () => {
 
   if (isLoading) return <Spinner />;
 
+  const onClick = (id: number) => {
+    id === SelectedGenre ? setSelectedGenre(undefined) : setSelectedGenre(id);
+  };
+
   return (
     <>
       <Heading fontSize="2xl" marginTop={9} marginBottom={3}>
@@ -38,7 +42,7 @@ const GenreList = () => {
               <Button
                 whiteSpace="normal"
                 fontSize="md"
-                onClick={() => setSelectedGenre(genre.id)}
+                onClick={() => onClick(genre.id)}
                 fontWeight={genre.id === SelectedGenre ? "bold" : "normal"}
                 variant="link"
                 textAlign="left"
