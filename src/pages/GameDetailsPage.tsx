@@ -19,7 +19,7 @@ const GameDetailsPage = () => {
       <GridItem>
         <Heading as={"h1"}>{game.name}</Heading>
         <ExpandableText>{game.description_raw}</ExpandableText>
-        <GameAttributes game={game} />
+        <GameAttributes gameId={game.id} />
       </GridItem>
       <GridItem>
         <GameTrailer gameId={game.id} />
