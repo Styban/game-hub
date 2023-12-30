@@ -15,17 +15,9 @@ const GameAttributes = ({ game }: Props) => {
           <Text key={platform.id}>{platform.name}</Text>
         ))}
       </DefinitionItems>
-      <DefinitionItems term="Metascore">
-        <CriticScore score={game.metacritic} />
-      </DefinitionItems>
       <DefinitionItems term="Genres">
         {game.genres?.map((genre) => (
           <Text key={genre.id}>{genre.name}</Text>
-        ))}
-      </DefinitionItems>
-      <DefinitionItems term="Platforms">
-        {game.publishers?.map((publisher) => (
-          <Text key={publisher.id}>{publisher.name}</Text>
         ))}
       </DefinitionItems>
     </SimpleGrid>

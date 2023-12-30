@@ -40,31 +40,6 @@ export default [
     slug: "nintendo",
   },
   {
-    id: 9,
-    name: "Atari",
-    slug: "atari",
-  },
-  {
-    id: 10,
-    name: "Commodore / Amiga",
-    slug: "commodore-amiga",
-  },
-  {
-    id: 11,
-    name: "SEGA",
-    slug: "sega",
-  },
-  {
-    id: 12,
-    name: "3DO",
-    slug: "3do",
-  },
-  {
-    id: 13,
-    name: "Neo Geo",
-    slug: "neo-geo",
-  },
-  {
     id: 14,
     name: "Web",
     slug: "web",

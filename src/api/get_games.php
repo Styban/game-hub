@@ -3,31 +3,33 @@ try {
     require_once 'db_connection.php';
 
     $genres = $_GET['genres'] ?? null;
-    $parentPlatforms = $_GET['parent_platforms'] ?? null;
+    $platforms = $_GET['platforms'] ?? null;
+    $search = $_GET['search'] ?? null;
 
-    $query = "SELECT * FROM games WHERE 1"; // Start with a basic query
+    $query = "CALL all_games()"; // Start with a basic query
 
     // Add conditions based on parameters
-    if ($genres !== null) {
-        $query = "SELECT g.*
-        FROM game_genres gg
-        LEFT JOIN games g ON gg.game_id = g.id
-        WHERE gg.genre_id = :genres";
+    if ($search !== null) {
+        $query = "CALL search_filter(:search)";
+    } elseif ($genres !== null) {
+        $query = ($platforms !== null) ? "CALL genre_platform_filter(:platforms, :genres)" : "CALL genre_filter(:genres)";
+    } elseif ($platforms !== null) {
+        $query = "CALL platform_filter(:platforms)";
     }
-
-    // if ($parentPlatforms !== null) {
-    //     $query .= " AND parent_platform_id = :parent_platforms";
-    // }
 
     $statement = $pdo->prepare($query);
 
     // Bind parameters if they are provided
+    if ($search !== null) {
+        $statement->bindParam(':search', $search);
+    }
+
     if ($genres !== null) {
         $statement->bindParam(':genres', $genres);
     }
 
-    if ($parentPlatforms !== null) {
-        $statement->bindParam(':parent_platforms', $parentPlatforms);
+    if ($platforms !== null) {
+        $statement->bindParam(':platforms', $platforms);
     }
 
     $statement->execute();

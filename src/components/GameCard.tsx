@@ -4,19 +4,20 @@ import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";
 import { Link } from "react-router-dom";
+import GameAdmin from "../entities/GameAdmin";
+import useGamesPlatform from "../adminhook/useGamesPlatform";
 interface Props {
-  game: Game;
+  game: GameAdmin;
 }
 
 const GameCard = ({ game }: Props) => {
+  const { data: platforms } = useGamesPlatform(game.id);
   return (
     <Card>
       <Image src={getCroppedImageUrl(game.background_image)} />
       <CardBody>
         <HStack justifyContent="space-between" marginBottom={3}>
-          <PlatformIconList
-            platforms={game.parent_platforms.map((p) => p.platform)}
-          />
+          <PlatformIconList platforms={platforms} />
           <CriticScore score={game.metacritic} />
         </HStack>
         <Heading fontSize={"2xl"}>
