@@ -4,6 +4,7 @@ export default interface GameAdmin {
   slug: string;
   background_image: string;
   metacritic: number;
+  game_trailer: string;
   description: string;
   downloads: number;
   price: number;

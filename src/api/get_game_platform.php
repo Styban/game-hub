@@ -2,7 +2,7 @@
 try {
     require_once 'db_connection.php';
 
-    $gameId = $_GET['gameId'] ?? null;
+    $gameId = $_GET['game'] ?? null;
 
     $query = "CALL get_game_platforms(:gameId)";
 
@@ -23,6 +23,6 @@ try {
     echo json_encode($result);
     die();
 } catch (PDOException $e) {
-    die("Query failed: " . $e->getMessage());
+    die("Query failed: get_game" . $e->getMessage());
 }
 ?>

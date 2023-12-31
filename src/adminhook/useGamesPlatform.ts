@@ -4,13 +4,13 @@ import Platform from "../entities/Platform";
 
 const apiClient = new PHPAPICLIENT<Platform>("/get_game_platform.php");
 
-const useGamesPlatform = (gameId: number) => {
+const useGamesPlatform = (Id: number) => {
   return useQuery({
-    queryKey: ["games", gameId],
+    queryKey: ["games", Id],
     queryFn: () =>
       apiClient.getAll({
         params: {
-          gameId: gameId,
+          game: Id,
         },
       }),
     staleTime: 24 * 60 * 60 * 1000,

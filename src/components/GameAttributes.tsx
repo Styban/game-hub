@@ -1,5 +1,4 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
-import Game from "../entities/Game";
 import DefinitionItems from "./DefinitionItems";
 import useGamesPlatform from "../adminhook/useGamesPlatform";
 import useGamesGenre from "../adminhook/useGamesGenre";
@@ -11,6 +10,9 @@ interface Props {
 const GameAttributes = ({ gameId }: Props) => {
   const { data: platforms } = useGamesPlatform(gameId);
   const { data: genres } = useGamesGenre(gameId);
+
+  console.log(platforms);
+  console.log(genres);
 
   return (
     <SimpleGrid columns={2} as="dl">

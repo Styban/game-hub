@@ -2,9 +2,9 @@
 try {
     require_once 'db_connection.php';
 
-    $gameId = $_GET['gameId'] ?? null;
+    $gameId = $_GET['slug'] ?? null;
 
-    $query = "CALL get_game_genres(:gameId)";
+    $query = "CALL get_game(:gameId)";
 
     $statement = $pdo->prepare($query);
 
@@ -23,6 +23,6 @@ try {
     echo json_encode($result);
     die();
 } catch (PDOException $e) {
-    die("Query failed: " . $e->getMessage());
+    die("Query failed: get_game" . $e->getMessage());
 }
 ?>
