@@ -11,9 +11,6 @@ const GameAttributes = ({ gameId }: Props) => {
   const { data: platforms } = useGamesPlatform(gameId);
   const { data: genres } = useGamesGenre(gameId);
 
-  console.log(platforms);
-  console.log(genres);
-
   return (
     <SimpleGrid columns={2} as="dl">
       <DefinitionItems term="Platforms">
