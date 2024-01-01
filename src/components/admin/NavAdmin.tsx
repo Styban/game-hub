@@ -21,7 +21,7 @@ const NavBarAdmin = () => {
             View Games
           </Text>
         </Link>
-        <Link to={"/sellercenter"}>
+        <Link to={"/addgame"}>
           <Text
             onClick={() => setActive(false)}
             fontWeight={active ? "normal" : "bold"}
