@@ -8,15 +8,26 @@ import {
   Button,
   VStack,
   Checkbox,
-  Radio,
-  RadioGroup,
+  Text,
   Wrap,
   WrapItem,
+  Heading,
 } from "@chakra-ui/react";
 
 const GameForm: React.FC = () => {
   return (
-    <Box maxW="xl" mx="auto" mt={8} p={6} borderWidth={1} borderRadius="md">
+    <Box
+      maxW="xl"
+      mx="auto"
+      mt={8}
+      mb={8}
+      p={6}
+      borderWidth={1}
+      borderRadius="md"
+    >
+      <Heading as={"h2"} textAlign={"center"} mb={4}>
+        Game Form
+      </Heading>
       <VStack spacing={4} align="stretch">
         <FormControl id="gameName" isRequired>
           <FormLabel>Game Name</FormLabel>
@@ -43,7 +54,7 @@ const GameForm: React.FC = () => {
 
         {/* Game Trailer Upload */}
         <FormControl id="gameTrailer">
-          <FormLabel>Game Trailer (Optional)</FormLabel>
+          <FormLabel>Game Trailer</FormLabel>
           <Input type="file" accept="video/*" />
         </FormControl>
 
