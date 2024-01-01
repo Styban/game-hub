@@ -2,19 +2,32 @@ import { Box, HStack, Image, Text } from "@chakra-ui/react";
 import logo from "../../assets/logo.png";
 import NavDrawer from "../NavDrawer";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const NavBarAdmin = () => {
+  const [active, setActive] = useState(true);
+
   return (
-    <HStack padding="10px" justifyContent={"space-between"}>
+    <HStack padding="10px" justifyContent={"space-between"} height={"80px"}>
       <Link to={"/"}>
-        <Image src={logo} boxSize={"60px"} objectFit="cover" />
+        <Image src={logo} boxSize={"90px"} objectFit="cover" />
       </Link>
       <HStack spacing={5}>
         <Link to={"/sellercenter"}>
-          <Text>View Games</Text>
+          <Text
+            onClick={() => setActive(true)}
+            fontWeight={active ? "bold" : "normal"}
+          >
+            View Games
+          </Text>
         </Link>
-        <Link to={"/"}>
-          <Text>Post Games</Text>
+        <Link to={"/sellercenter"}>
+          <Text
+            onClick={() => setActive(false)}
+            fontWeight={active ? "normal" : "bold"}
+          >
+            Post Games
+          </Text>
         </Link>
       </HStack>
 

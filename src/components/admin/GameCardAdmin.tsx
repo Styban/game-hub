@@ -1,20 +1,28 @@
 import {
   Badge,
+  Button,
   Card,
   CardBody,
   HStack,
   Heading,
   Image,
+  Stack,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import CriticScore from "../CriticScore";
 import getCroppedImageUrl from "../../services/image-url";
 import GameAdmin from "../../entities/GameAdmin";
+import { MdBuild, MdDelete } from "react-icons/md";
+
 interface Props {
   game: GameAdmin;
 }
 
 const GameCardAdmin = ({ game }: Props) => {
+  const deleteColor = useColorModeValue("red.200", "red.100");
+  const updateColor = useColorModeValue("yellow.300", "yellow.500");
+
   return (
     <Card>
       <Image src={getCroppedImageUrl(game.background_image)} />
@@ -44,6 +52,24 @@ const GameCardAdmin = ({ game }: Props) => {
             ₱{(game.price * game.downloads).toLocaleString()}
           </Badge>
         </HStack>
+        <Stack direction="row" justifyContent={"space-evenly"}>
+          <Button
+            rightIcon={<MdBuild />}
+            color={updateColor}
+            variant="ghost"
+            size={"lg"}
+          >
+            Edit
+          </Button>
+          <Button
+            leftIcon={<MdDelete />}
+            color={deleteColor}
+            variant="ghost"
+            size={"lg"}
+          >
+            Delete
+          </Button>
+        </Stack>
       </CardBody>
     </Card>
   );

@@ -11,8 +11,13 @@ import {
 import GenreList from "../../components/GenreList";
 import PlatformSelector from "../../components/PlatformSelector";
 import GameGridAdmin from "../../components/admin/GameGridAdmin";
+import useRevenue from "../../adminhook/useRevenue";
 
 const AdminHomePage = () => {
+  const { data } = useRevenue();
+  const revenue = data ? data[0].total : 0;
+  console.log(revenue);
+
   return (
     <Grid
       templateAreas={{
@@ -37,7 +42,7 @@ const AdminHomePage = () => {
           <Text fontSize="lg" marginBottom={4}>
             Total Revenue -{" "}
             <Badge variant="outline" fontSize={"lg"}>
-              ₱1,000,000,000
+              ₱{data ? data[0].total : 0}
             </Badge>
           </Text>
           <Flex marginBottom={5}>
