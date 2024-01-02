@@ -28,6 +28,12 @@ class PHPAPICLIENT<T> {
       .post<T[]>(this.endpoint, data, config)
       .then((res) => res.data);
   };
+
+  delete = (id: number | string, config?: AxiosRequestConfig) => {
+    return axiosInstance
+      .delete<T[]>(this.endpoint, config)
+      .then((res) => res.data);
+  };
 }
 
 export { CanceledError };

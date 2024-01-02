@@ -4,9 +4,37 @@ import GameCardContainer from "../GameCardContainer";
 import React from "react";
 import GameCardAdmin from "./GameCardAdmin";
 import useGamesAdmin from "../../adminhook/useGamesAdmin";
+import useGameDelete from "../../adminhook/useGameDelete";
+import PHPAPICLIENT from "../../api/apiClient";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const GameGrid = () => {
+  const apiClient = new PHPAPICLIENT<number>("/delete_game.php");
+
   const { data: games, isLoading } = useGamesAdmin();
+  const navigate = useNavigate();
+
+  const handleDelete = (id: number) => {
+    apiClient
+      .delete(id, {
+        params: {
+          gameId: id,
+        },
+      })
+      .then((response) => {
+        console.log("Form submission successful", response);
+        window.location.reload();
+      })
+      .catch((error) => {
+        // Check for Axios cancellation errors
+        if (axios.isCancel(error)) {
+          console.log("Request canceled:", error.message);
+        } else {
+          console.error("Error submitting form", error);
+        }
+      });
+  };
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -25,7 +53,7 @@ const GameGrid = () => {
       {games?.map((game, index) => (
         <React.Fragment key={index}>
           <GameCardContainer key={game.id}>
-            <GameCardAdmin game={game} />
+            <GameCardAdmin game={game} onDelete={handleDelete} />
           </GameCardContainer>
         </React.Fragment>
       ))}

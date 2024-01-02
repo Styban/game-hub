@@ -16,7 +16,6 @@ import useRevenue from "../../adminhook/useRevenue";
 const AdminHomePage = () => {
   const { data } = useRevenue();
   const revenue = data ? data[0].total : 0;
-  console.log(revenue);
 
   return (
     <Grid
