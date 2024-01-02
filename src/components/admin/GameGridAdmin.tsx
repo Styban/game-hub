@@ -6,14 +6,16 @@ import GameCardAdmin from "./GameCardAdmin";
 import useGamesAdmin from "../../adminhook/useGamesAdmin";
 import PHPAPICLIENT from "../../api/apiClient";
 import axios from "axios";
+import GameAdmin from "../../entities/GameAdmin";
 
 const GameGrid = () => {
-  const apiClient = new PHPAPICLIENT<number>("/delete_game.php");
+  const apiClientDelete = new PHPAPICLIENT<number>("/delete_game.php");
+  const apiClientEdit = new PHPAPICLIENT<number>("/delete_game.php");
 
   const { data: games, isLoading } = useGamesAdmin();
 
   const handleDelete = (id: number) => {
-    apiClient
+    apiClientDelete
       .delete(id, {
         params: {
           gameId: id,
@@ -33,6 +35,8 @@ const GameGrid = () => {
       });
   };
 
+  const handleUpdate = (game: GameAdmin) => {};
+
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
@@ -50,7 +54,11 @@ const GameGrid = () => {
       {games?.map((game, index) => (
         <React.Fragment key={index}>
           <GameCardContainer key={game.id}>
-            <GameCardAdmin game={game} onDelete={handleDelete} />
+            <GameCardAdmin
+              game={game}
+              onDelete={handleDelete}
+              onUpdate={handleUpdate}
+            />
           </GameCardContainer>
         </React.Fragment>
       ))}

@@ -48,7 +48,7 @@ try {
         $response = array("status" => "success", "message" => "Data successfully inserted");
     } else {
         // Error during insertion
-        $response = array("status" => "error", "message" => "Error inserting data: " . $stmt->error);
+        $response = array("status" => "error", "message" => "Error inserting data: ");
     }
 
     // Send JSON response back to the client

@@ -18,9 +18,10 @@ import { MdBuild, MdDelete } from "react-icons/md";
 interface Props {
   game: GameAdmin;
   onDelete: (id: number) => void;
+  onUpdate: (game: GameAdmin) => void;
 }
 
-const GameCardAdmin = ({ game, onDelete }: Props) => {
+const GameCardAdmin = ({ game, onDelete, onUpdate }: Props) => {
   const deleteColor = useColorModeValue("red.200", "red.100");
   const updateColor = useColorModeValue("yellow.300", "yellow.500");
 
@@ -59,6 +60,7 @@ const GameCardAdmin = ({ game, onDelete }: Props) => {
             color={updateColor}
             variant="ghost"
             size={"lg"}
+            onClick={() => onUpdate(game)}
           >
             Edit
           </Button>
