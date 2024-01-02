@@ -4,16 +4,13 @@ import GameCardContainer from "../GameCardContainer";
 import React from "react";
 import GameCardAdmin from "./GameCardAdmin";
 import useGamesAdmin from "../../adminhook/useGamesAdmin";
-import useGameDelete from "../../adminhook/useGameDelete";
 import PHPAPICLIENT from "../../api/apiClient";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const GameGrid = () => {
   const apiClient = new PHPAPICLIENT<number>("/delete_game.php");
 
   const { data: games, isLoading } = useGamesAdmin();
-  const navigate = useNavigate();
 
   const handleDelete = (id: number) => {
     apiClient

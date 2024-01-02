@@ -16,12 +16,13 @@ import {
 } from "@chakra-ui/react";
 import PHPAPICLIENT from "../../api/apiClient";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const GameForm: React.FC = () => {
   const apiClient = new PHPAPICLIENT<any>("add_game.php");
+  const navigate = useNavigate();
 
-  // State to store form data
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     gameName: "",
     description: "",
     price: 0,
@@ -30,11 +31,13 @@ const GameForm: React.FC = () => {
     gameTrailer: null,
     genre: "",
     platform: "",
-  });
+  };
+
+  // State to store form data
+  const [formData, setFormData] = useState(initialFormData);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(formData);
 
     // Perform any additional actions with the form data here
     // Send form data using the apiClient instance
@@ -42,6 +45,10 @@ const GameForm: React.FC = () => {
       .post({ data: formData })
       .then((response) => {
         console.log("Form submission successful", response);
+
+        setFormData(initialFormData);
+        navigate("/sellercenter");
+        window.location.reload();
       })
       .catch((error) => {
         // Check for Axios cancellation errors

@@ -2,8 +2,6 @@
 try {
     require_once 'db_connection.php';
 
-    // $data = json_decode(file_get_contents("php://input"), true);
-
     $gameId = $_GET['gameId'] ?? null;
 
     error_log('Received gameId: ' . $gameId);
