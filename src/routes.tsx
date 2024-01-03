@@ -6,6 +6,7 @@ import ErrorPage from "./pages/ErrorPage";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminHomePage from "./pages/admin/AdminHomePage";
 import GameForm from "./components/admin/GameForm";
+import GameDetailsPageAdmin from "./pages/admin/GameDetailsAdminPage";
 
 const router = createBrowserRouter([
   {
@@ -21,8 +22,17 @@ const router = createBrowserRouter([
   {
     element: <AdminLayout />,
     children: [
-      { path: "sellercenter", element: <AdminHomePage /> },
+      {
+        path: "sellercenter",
+        element: <AdminHomePage />,
+      },
       { path: "addgame", element: <GameForm /> },
+    ],
+  },
+  {
+    element: <AdminLayout />,
+    children: [
+      { path: "sellercenter/games/:slug", element: <GameDetailsPageAdmin /> },
     ],
   },
 ]);

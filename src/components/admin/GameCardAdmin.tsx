@@ -14,6 +14,7 @@ import CriticScore from "../CriticScore";
 import getCroppedImageUrl from "../../services/image-url";
 import GameAdmin from "../../entities/GameAdmin";
 import { MdBuild, MdDelete } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   game: GameAdmin;
@@ -22,6 +23,8 @@ interface Props {
 }
 
 const GameCardAdmin = ({ game, onDelete, onUpdate }: Props) => {
+  const navigate = useNavigate();
+
   const deleteColor = useColorModeValue("red.200", "red.100");
   const updateColor = useColorModeValue("yellow.300", "yellow.500");
 
@@ -60,7 +63,10 @@ const GameCardAdmin = ({ game, onDelete, onUpdate }: Props) => {
             color={updateColor}
             variant="ghost"
             size={"lg"}
-            onClick={() => onUpdate(game)}
+            onClick={() => {
+              onUpdate(game);
+              navigate(`games/${game.slug}`);
+            }}
           >
             Edit
           </Button>

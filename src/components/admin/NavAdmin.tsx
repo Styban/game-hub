@@ -9,7 +9,7 @@ const NavBarAdmin = () => {
 
   return (
     <HStack padding="10px" justifyContent={"space-between"} height={"80px"}>
-      <Link to={"/"}>
+      <Link to={"/sellercenter"}>
         <Image src={logo} boxSize={"90px"} objectFit="cover" />
       </Link>
       <HStack spacing={5}>

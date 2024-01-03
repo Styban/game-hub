@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig, CanceledError } from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://192.168.1.7/game-hub/src/api",
+  baseURL: "http://192.168.1.4/game-hub/src/api",
 });
 
 class PHPAPICLIENT<T> {
