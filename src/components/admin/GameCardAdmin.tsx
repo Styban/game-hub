@@ -19,10 +19,9 @@ import { useNavigate } from "react-router-dom";
 interface Props {
   game: GameAdmin;
   onDelete: (id: number) => void;
-  onUpdate: (game: GameAdmin) => void;
 }
 
-const GameCardAdmin = ({ game, onDelete, onUpdate }: Props) => {
+const GameCardAdmin = ({ game, onDelete }: Props) => {
   const navigate = useNavigate();
 
   const deleteColor = useColorModeValue("red.200", "red.100");
@@ -64,7 +63,6 @@ const GameCardAdmin = ({ game, onDelete, onUpdate }: Props) => {
             variant="ghost"
             size={"lg"}
             onClick={() => {
-              onUpdate(game);
               navigate(`games/${game.slug}`);
             }}
           >

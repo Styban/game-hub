@@ -10,7 +10,6 @@ import GameAdmin from "../../entities/GameAdmin";
 
 const GameGrid = () => {
   const apiClientDelete = new PHPAPICLIENT<number>("/delete_game.php");
-  const apiClientEdit = new PHPAPICLIENT<number>("/delete_game.php");
 
   const { data: games, isLoading } = useGamesAdmin();
 
@@ -35,8 +34,6 @@ const GameGrid = () => {
       });
   };
 
-  const handleUpdate = (game: GameAdmin) => {};
-
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
@@ -54,11 +51,7 @@ const GameGrid = () => {
       {games?.map((game, index) => (
         <React.Fragment key={index}>
           <GameCardContainer key={game.id}>
-            <GameCardAdmin
-              game={game}
-              onDelete={handleDelete}
-              onUpdate={handleUpdate}
-            />
+            <GameCardAdmin game={game} onDelete={handleDelete} />
           </GameCardContainer>
         </React.Fragment>
       ))}

@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
 import { Box } from "@chakra-ui/react";
-import NavBarAdmin from "../../components/NavBarAdmin";
+import NavBarAdmin from "../components/NavBarAdmin";
 
-const AdminLayout = () => {
+const LayoutAdmin = () => {
   return (
     <>
       <NavBarAdmin />
@@ -13,4 +13,4 @@ const AdminLayout = () => {
   );
 };
 
-export default AdminLayout;
+export default LayoutAdmin;

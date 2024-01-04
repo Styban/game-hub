@@ -13,11 +13,8 @@ import {
 import ColorModeSwitch from "./ColorModeSwitch";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { NavLink, useParams } from "react-router-dom";
-import useGameQueryStore from "../store";
 
-const NavDrawer = () => {
-  const gameQuery = useGameQueryStore((s) => s.gameQuery);
-  const user = gameQuery.user;
+const NavDrawerAdmin = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
@@ -29,7 +26,8 @@ const NavDrawer = () => {
           <DrawerHeader borderBottomWidth="1px">Basic Drawer</DrawerHeader>
           <DrawerBody>
             <Stack spacing={2}>
-              <NavLink to={`/user/${user}`}>Home</NavLink>
+              <NavLink to={`/admin`}>Home</NavLink>
+              <NavLink to={"/admin/sellercenter"}>Admin</NavLink>
               <NavLink to={"/"}>Logout</NavLink>
               <ColorModeSwitch />
             </Stack>
@@ -40,4 +38,4 @@ const NavDrawer = () => {
   );
 };
 
-export default NavDrawer;
+export default NavDrawerAdmin;
