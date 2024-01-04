@@ -10,7 +10,7 @@ try {
 
     if (isset($data['data'])) {
         // Destructure the values from the "data" array
-        $gameId = $data['data']['game_id'];
+        $user = $data['data']['game_id'];
         $gameName = $data['data']['gameName'];
         $description = $data['data']['description'];
         $metacritic = $data['data']['metacritic'];
@@ -32,7 +32,7 @@ try {
     $query = "CALL game_edit(:gameId, :gameName, :slug, :description, :coverImage, :gameTrailer, :price, :metacritic)";
 
     $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':gameId', $gameId);
+    $stmt->bindParam(':gameId', $user);
     $stmt->bindParam(':gameName', $gameName);
     $stmt->bindParam(':slug', $slug);
     $stmt->bindParam(':description', $description);

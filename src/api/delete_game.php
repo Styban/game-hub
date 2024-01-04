@@ -2,16 +2,16 @@
 try {
     require_once 'db_connection.php';
 
-    $gameId = $_GET['gameId'] ?? null;
+    $user = $_GET['gameId'] ?? null;
 
-    error_log('Received gameId: ' . $gameId);
+    error_log('Received gameId: ' . $user);
     $query = "DELETE FROM games WHERE id = :gameId";
 
     $statement = $pdo->prepare($query);
 
     // Bind parameters if they are provided
-    if ($gameId !== null) {
-        $statement->bindParam(':gameId', $gameId);
+    if ($user !== null) {
+        $statement->bindParam(':gameId', $user);
     }
 
     $statement->execute();

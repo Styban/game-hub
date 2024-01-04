@@ -2,15 +2,15 @@
 try {
     require_once 'db_connection.php';
 
-    $gameId = $_GET['gameId'] ?? null;
+    $user = $_GET['gameId'] ?? null;
 
     $query = "CALL get_game_genres(:gameId)";
 
     $statement = $pdo->prepare($query);
 
     // Bind parameters if they are provided
-    if ($gameId !== null) {
-        $statement->bindParam(':gameId', $gameId);
+    if ($user !== null) {
+        $statement->bindParam(':gameId', $user);
     }
 
     $statement->execute();

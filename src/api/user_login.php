@@ -2,15 +2,17 @@
 try {
     require_once 'db_connection.php';
 
-    $user = $_GET['gameId'] ?? null;
+    $user = $_GET['user'] ?? null;
+    $key = $_GET['key'] ?? null;
 
-    $query = "CALL get_screenshots(:gameId)";
+    $query = "CALL user_log(:user, :key)";
 
     $statement = $pdo->prepare($query);
 
     // Bind parameters if they are provided
-    if ($user !== null) {
-        $statement->bindParam(':gameId', $user);
+    if ($user !== null && $key !== null) {
+        $statement->bindParam(':user', $user);
+        $statement->bindParam(':key', $key);
     }
 
     $statement->execute();
@@ -23,6 +25,6 @@ try {
     echo json_encode($result);
     die();
 } catch (PDOException $e) {
-    die("Query failed: " . $e->getMessage());
+    die("Query failed: user_log" . $e->getMessage());
 }
 ?>

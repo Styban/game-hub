@@ -11,16 +11,14 @@ import {
   CardHeader,
   Center,
   Box,
-  AbsoluteCenter,
-  CardFooter,
-  Divider,
   FormHelperText,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { Form, Link, useNavigate } from "react-router-dom";
 import backGround from "../assets/gameHub.jpg";
 import useGameQueryStore from "../store";
+import useLog from "../hooks/useLog";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
@@ -28,6 +26,9 @@ const Login = () => {
   const handleClick = () => setShow(!show);
 
   const setLoggedUser = useGameQueryStore((s) => s.setLoggedUser);
+  const setLoggedUserPassword = useGameQueryStore(
+    (s) => s.setLoggedUserPassword
+  );
 
   const navigate = useNavigate();
 
@@ -35,8 +36,11 @@ const Login = () => {
     const { user, password } = data;
 
     setLoggedUser(user);
+    setLoggedUserPassword(password);
 
-    user === "admin" ? navigate(`admin`) : navigate(`user/${user}`);
+    user === "admin" && password === "admin"
+      ? navigate(`admin`)
+      : navigate(`user/${user}`);
   };
 
   return (
@@ -66,7 +70,7 @@ const Login = () => {
                   <FormLabel fontWeight={"bold"}>User</FormLabel>
                   <Input
                     {...register("user")}
-                    placeholder="Enter Username of Email"
+                    placeholder="Enter Username"
                     border={"1px"}
                     type="text"
                   />
