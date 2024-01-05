@@ -13,8 +13,11 @@ import {
 import ColorModeSwitch from "./ColorModeSwitch";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { NavLink, useParams } from "react-router-dom";
+import useGameQueryStore from "../store";
 
 const NavDrawerAdmin = () => {
+  const gameQuery = useGameQueryStore((s) => s.gameQuery);
+  const user = gameQuery.user;
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>

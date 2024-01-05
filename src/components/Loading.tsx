@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 
 const Loading = () => {
   const { user, key } = useGameQueryStore((s) => s.gameQuery);
+  const setUserID = useGameQueryStore((s) => s.setSelectedUserId);
 
   const user_name = user ? user : "";
   const pass = key ? key : "";
@@ -32,13 +33,14 @@ const Loading = () => {
 
     setTimeout(() => {
       if (results && results?.length > 0) {
-        console.log("success: " + results);
+        setUserID(results[0].id);
 
         const User = results[0].user_name;
-        console.log("Component re-rendered");
         User === "admin" ? navigate("/admin") : navigate("/user/" + User);
       } else {
-        console.log("error");
+        console.log(results);
+
+        console.log("invalid input");
         navigate("/");
       }
     }, delay);

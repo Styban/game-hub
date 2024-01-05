@@ -10,6 +10,7 @@ import GameDetailsPageAdmin from "./pages/admin/GameDetailsAdminPage";
 import Login from "./components/Login";
 import LayoutAdmin from "./pages/LayoutAdmin";
 import Loading from "./components/Loading";
+import LibraryPage from "./pages/LibraryPage";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "games/:slug", element: <GameDetailsPage /> },
+      { path: "libraries", element: <LibraryPage /> },
     ],
   },
   {
