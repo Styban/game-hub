@@ -11,6 +11,7 @@ import Login from "./components/Login";
 import LayoutAdmin from "./pages/LayoutAdmin";
 import Loading from "./components/Loading";
 import LibraryPage from "./pages/LibraryPage";
+import Register from "./components/Register";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   { path: "auth", errorElement: <ErrorPage />, element: <Loading /> },
+  { path: "register", errorElement: <ErrorPage />, element: <Register /> },
   {
     path: "/user/:user",
     element: <Layout />,
