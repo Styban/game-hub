@@ -15,8 +15,6 @@ import { Link } from "react-router-dom";
 import GameAdmin from "../../entities/GameAdmin";
 import useGamesPlatform from "../../adminhook/useGamesPlatform";
 import { MdDownload } from "react-icons/md";
-import PHPAPICLIENT from "../../api/apiClient";
-import axios from "axios";
 interface Props {
   game: GameAdmin;
 }

@@ -19,10 +19,8 @@ const useGameLibrary = () => {
           search: gameQuery.search,
         },
       }),
-    staleTime: 60 * 1000,
+    staleTime: 3000,
   });
 };
-
-// useData<Game>('/games', {params: {genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id, ordering: gameQuery.sortOrder, search: gameQuery.search}}, [gameQuery])
 
 export default useGameLibrary;

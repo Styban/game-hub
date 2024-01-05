@@ -8,8 +8,6 @@ import useGameLibrary from "../../adminhook/useGameLibrary";
 const GameLibraryGrid = () => {
   const { data: games, isLoading } = useGameLibrary();
 
-  console.log(games);
-
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (

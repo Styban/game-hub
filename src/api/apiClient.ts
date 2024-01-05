@@ -23,7 +23,7 @@ class PHPAPICLIENT<T> {
       .then((res) => res.data);
   };
 
-  post = (data: any, config?: AxiosRequestConfig) => {
+  post = (data?: any, config?: AxiosRequestConfig) => {
     return axiosInstance
       .post<T[]>(this.endpoint, data, config)
       .then((res) => res.data);

@@ -16,9 +16,6 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Stat,
-  StatHelpText,
-  StatNumber,
   Text,
   useColorModeValue,
   useDisclosure,
@@ -31,7 +28,9 @@ import { Link } from "react-router-dom";
 import GameAdmin from "../entities/GameAdmin";
 import useGamesPlatform from "../adminhook/useGamesPlatform";
 import { MdDownload } from "react-icons/md";
-import { FormEvent } from "react";
+import { useEffect, useState } from "react";
+import useDownload from "../hooks/useDownload";
+import useGameQueryStore from "../store";
 import PHPAPICLIENT from "../api/apiClient";
 import axios from "axios";
 interface Props {
@@ -39,7 +38,9 @@ interface Props {
 }
 
 const GameCard = ({ game }: Props) => {
-  const apiClient = new PHPAPICLIENT<any>("make_transact.php");
+  const apiClient = new PHPAPICLIENT<GameAdmin>("/make_transact.php");
+
+  const userId = useGameQueryStore((s) => s.gameQuery.userId);
 
   const toast = useToast();
 
@@ -49,22 +50,27 @@ const GameCard = ({ game }: Props) => {
 
   const downloadColor = useColorModeValue("green.300", "green.100");
 
-  const handlePurchase = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handlePurchase = () => {
+    onOpen;
 
-    // apiClient
-    //   .post("")
-    //   .then((response) => {
-    //     console.log("Form submission successful", response);
-    //   })
-    //   .catch((error) => {
-    //     // Check for Axios cancellation errors
-    //     if (axios.isCancel(error)) {
-    //       console.log("Request canceled:", error.message);
-    //     } else {
-    //       console.error("Error submitting form", error);
-    //     }
-    //   });
+    apiClient
+      .getAll({
+        params: {
+          userId: userId,
+          gameId: game.id,
+        },
+      })
+      .then((response) => {
+        console.log("Form submission successful", response);
+      })
+      .catch((error) => {
+        // Check for Axios cancellation errors
+        if (axios.isCancel(error)) {
+          console.log("Request canceled:", error.message);
+        } else {
+          console.error("Error submitting form", error);
+        }
+      });
 
     // Create an example promise that resolves in 5s
     const examplePromise = new Promise((resolve) => {
@@ -102,7 +108,7 @@ const GameCard = ({ game }: Props) => {
               color={downloadColor}
               variant="ghost"
               style={{ width: "auto", fontSize: "20px" }}
-              onClick={onOpen}
+              onClick={handlePurchase}
             >
               Download
             </Button>
