@@ -9,12 +9,14 @@ import GameForm from "./components/admin/GameForm";
 import GameDetailsPageAdmin from "./pages/admin/GameDetailsAdminPage";
 import Login from "./components/Login";
 import LayoutAdmin from "./pages/LayoutAdmin";
+import Loading from "./components/Loading";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Login />,
   },
+  { path: "auth", errorElement: <ErrorPage />, element: <Loading /> },
   {
     path: "/user/:user",
     element: <Layout />,

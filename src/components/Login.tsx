@@ -13,12 +13,11 @@ import {
   Box,
   FormHelperText,
 } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { Form, Link, useNavigate } from "react-router-dom";
 import backGround from "../assets/gameHub.jpg";
 import useGameQueryStore from "../store";
-import useLog from "../hooks/useLog";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
@@ -38,9 +37,7 @@ const Login = () => {
     setLoggedUser(user);
     setLoggedUserPassword(password);
 
-    user === "admin" && password === "admin"
-      ? navigate(`admin`)
-      : navigate(`user/${user}`);
+    navigate("auth");
   };
 
   return (
